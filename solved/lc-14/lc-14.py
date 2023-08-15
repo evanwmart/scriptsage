@@ -2,20 +2,19 @@ from typing import List
 
 
 class Solution:
-    def longestCommonPrefix(self, strs: List[str]) -> str:
+    def longestCommonPrefix(self, v: List[str]) -> str:
 
-        if not strs:
-            return ""
+        ans = ""
+        v = sorted(v)
+        first = v[0]
+        last = v[-1]
 
-        prefix = ""
+        for i in range(min(len(first), len(last))):
 
-        for i in range(min(len(s) for s in strs)):
-            char = strs[0][i]
+            if (first[i] != last[i]):
 
-            for s in strs[1:]:
-                if s[i] != char:
-                    return prefix
+                return ans
 
-            prefix += char
+            ans += first[i]
 
-        return prefix
+        return ans
